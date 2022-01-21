@@ -148,6 +148,8 @@ beta_extracted_filepaths=[]
 base_golay_path=os.path.join("refined_data","golay")
 base_artifacts_removed_path="artifacts_removed_data"
 base_beta_extracted_path="beta_extracted"
+base_channel_selected_path="channel_selected"
+channel_selected_file_paths=[]
 for i in range(1,10):
     for j in range(1,5):
         for t in ["E","T"]:
@@ -161,6 +163,9 @@ for i in range(1,10):
 
             r=os.path.join(base_beta_extracted_path,str(i),str(j),str(t),file_name)
             beta_extracted_filepaths.append(r)
+
+            s=os.path.join(base_channel_selected_path,str(i),str(j),str(t),file_name)
+            channel_selected_file_paths.append(r)
             
 if __name__ == "__main__":
     if sys.argv[1]=="r":
@@ -330,11 +335,10 @@ if __name__ == "__main__":
                 os.mkdir(type_path)
             if not os.path.exists(com_file_path):
                 os.mkdir(com_file_path)
-                
         if not os.path.exists("min_n.pickle"):
             min_n=float('inf')
             pickle_out = open("min_n.pickle","wb")
-            for f in beta_extracted_filepaths[:36]:
+            for f in channel_selected_file_paths:
                 df=pd.read_csv(f,header=None)
                 n=len(df[:][0])
                 if(n<min_n):
@@ -344,7 +348,7 @@ if __name__ == "__main__":
             p = open("min_n.pickle",'rb')
             min_n = pickle.load(p)
         with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
-            for f in beta_extracted_filepaths[:36]:
+            for f in channel_selected_file_paths:
                 try:
                     executor.submit(segment_data,f)
                 except Exception as e:
