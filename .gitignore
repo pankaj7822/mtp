@@ -3,3 +3,5 @@ reduced_data/
 segmented_data/
 venv/
 min_n.pickle
+__pycache__/ 
+imfs/
