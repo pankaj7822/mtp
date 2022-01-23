@@ -6,14 +6,15 @@ from MEMD_all import memd
 import concurrent.futures
 
 def generateimf(file_path,save_path):
-    print("started working for file",file_path)
-    df=pd.read_csv(file_path,header=None)
-    n_array=df.to_numpy()
-    imf = memd(n_array)
     if not os.path.exists(save_path):
-        pickle_out = open(save_path,"wb")
-        pickle.dump(imf, pickle_out)
-    print("Task Completed for",save_path)
+        print("started working for file",file_path)
+        df=pd.read_csv(file_path,header=None)
+        n_array=df.to_numpy()
+        imf = memd(n_array)
+        if not os.path.exists(save_path):
+            pickle_out = open(save_path,"wb")
+            pickle.dump(imf, pickle_out)
+        print("Task Completed for",save_path)
 
 if __name__ == "__main__":
     if sys.argv[1]=="gi":
