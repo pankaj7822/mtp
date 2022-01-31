@@ -1,8 +1,10 @@
 channel_selected/
+channel_selected_14/
 reduced_data/
 segmented_data/
 venv/
 min_n.pickle
+beta_extracted/
 __pycache__/ 
 imfs/
 .*
