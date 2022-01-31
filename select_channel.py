@@ -26,7 +26,7 @@ print(files)
 def selectchannel(file_path,save_path):
   print("selected channels",file_path)
   df=pd.read_csv(file_path,header=None)
-  channel_to_be_selected=[8, 10, 12, 16, 14, 22, 3, 19, 15, 5, 13, 11, 21, 9]
+  channel_to_be_selected=[8, 10, 12, 16, 14, 22, 3, 19]
   l=[i-1 for i in channel_to_be_selected]
   final_df = df.iloc[:,l]
   final_df.to_csv(save_path,index=False,header=None)
