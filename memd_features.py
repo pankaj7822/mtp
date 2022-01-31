@@ -5,6 +5,10 @@ import pickle
 from MEMD_all import memd
 import concurrent.futures
 
+
+if not os.path.exists("imfs"):
+    os.mkdir("imfs")
+
 def generateimf(file_path,save_path):
     if not os.path.exists(save_path):
         print("started working for file",file_path)
