@@ -30,7 +30,7 @@ for f in files:
     principalComponents = pca.fit_transform(x)
     principalDf = pd.DataFrame(data = principalComponents)
     f_narray=principalDf.to_numpy()
-    for i in range(1,14):
+    for i in range(1,8):
         x=imf[:9,i,:]
         scaler = StandardScaler()
         scaler.fit(x)

@@ -8,3 +8,4 @@ beta_extracted/
 __pycache__/ 
 imfs/
 .*
+excluded_segments.txt

@@ -8,4 +8,4 @@
 #SBATCH --exclusive
 
 
-python memd_features.py gi
+python PCA.py
